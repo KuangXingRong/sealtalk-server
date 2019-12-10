@@ -284,7 +284,7 @@
 * 400: 错误的请求
 * 500: 应用服务器内部错误
 
-### POST /user/register
+### POST /user//register/{stAccount}/{password}
 
 注册新用户。
 
@@ -292,15 +292,13 @@
 
 ```
 {
-  "nickname": "Tom",
-  "password": "P@ssw0rd",
-  "verification_token": "75dd0f90-9b0d-11e5-803f-59b82644bc50"
+  "stAccount": "Tom",
+  "password": "@Pssword"
 }
 ```
 
-* nickname: 昵称，1 到 32 个字节
+* stAccount: 账号，1 到 32 个字节
 * password: 密码，6 到 20 个字节，不能包含空格
-* verification_token: 调用 /user/verify_code 成功后返回的 verification_token
 
 #### 返回结果
 
@@ -309,9 +307,7 @@
 ```
 {
   "code": 200,
-  "result": {
-    "id": "5Vg2Xh9f"
-  }
+  "result": "OK"
 }
 ```
 
@@ -331,7 +327,7 @@
 * 404: verification_token 不存在
 * 500: 应用服务器内部错误
 
-### POST /user/login
+### POST /user/login/{stAccount}/{password}
 
 用户登录。登录成功后，会设置 Cookie，后续接口调用需要登录的权限都依赖于 Cookie。
 
@@ -339,13 +335,11 @@
 
 ```
 {
-  "region": 86,
-  "phone": 13912345678,
+  "stAccount": 13912345678,
   "password": "P@ssw0rd"
 }
 ```
 
-* region: 国际电话区号
 * phone: 手机号
 * password: 密码，6 到 20 个字节，不能包含空格
 
@@ -355,21 +349,26 @@
 
 ```
 {
-  "code": 200,
-  "result": {
-    "id": "5Vg2Xh9f",
-    "token": "C4nEgo1TK0Ly6zUr/+Hqqu/XQOlLIWwcquFNlNhLydOQwZlSzscUQQfhEU6nFWJ+yPKQhMU6qP5XXBgOWA1AhckFbQ/t+nm4"
-  }
+    result: {
+    	id: 4,
+    	nickname: "kxr112",
+    	password: "123456",
+    	portraituri: "http://www.sucaijishi.com/uploadfile/2016/0203/20160203022630582.png",
+    	gender: "male",
+    	staccount: "kxr112",
+    	phone: null
+},
+    code: 200,
+    message: "登录成功"
 }
 ```
 
-* id: 登录用户 Id
-* token: 融云 Token
 
 返回码说明：
 
 * 200: 请求成功
-* 1000: 错误的手机号或者密码
+* 400: 错误的手机号或者密码
+* 401: 更新Token失败
 
 返回结果说明：
 
@@ -399,6 +398,7 @@
 ```
 {
   "code": 200
+  "message": "已退出登录"
 }
 ```
 
