@@ -284,7 +284,7 @@
 * 400: 错误的请求
 * 500: 应用服务器内部错误
 
-### POST /user//register/{stAccount}/{password}
+### POST /user/register/{stAccount}/{password}
 
 注册新用户。
 
