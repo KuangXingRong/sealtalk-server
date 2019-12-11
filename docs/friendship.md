@@ -8,7 +8,7 @@
 | [/friendship/delete](#restful-friendshipdelete) | 删除好友请求 |
 | [/friendship/setDisplayName](#restful-friendshipsetDisplayName) | 设置好友备注名 |
 | [/friendship/all](#restful-friendshipfriendshipall) | 获取好友列表 |
-| [/friendship/getContactsInfo](#restful-friendshipgetContactsInfocontacstList) | 获取通讯录朋友信息列表 |
+| [/friendship/getContactsInfo](#restful-friendshipgetContactsInfo{contacstList}) | 获取通讯录朋友信息列表 |
 ## API 说明
 
 ### RestFul /friendship/invite/{friendID}/{message}/{source}
