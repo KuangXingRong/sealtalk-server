@@ -2,13 +2,13 @@
 
 | 接口地址 | 说明 |
 |---------|-----|
-| [/friendship/invite](#post-friendshipinvite) | 发起添加好友 |
-| [/friendship/agree](#post-friendshipagree) | 同意加好友请求 |
-| [/friendship/ignore](#post-friendshipignore) | 忽略好友请求 |
-| [/friendship/delete](#post-friendshipdelete) | 删除好友请求 |
-| [/friendship/setDisplayName](#post-friendshipsetDisplayName) | 设置好友备注名 |
-| [/friendship/all](#get-friendshipfriendshipall) | 获取好友列表 |
-| [/friendship/getContactsInfo](#post-friendshipgetContactsInfo) | 获取通讯录朋友信息列表 |
+| [/friendship/invite](#restful-friendshipinvite) | 发起添加好友 |
+| [/friendship/agree](#restful-friendshipagree) | 同意加好友请求 |
+| [/friendship/ignore](#restful-friendshipignore) | 忽略好友请求 |
+| [/friendship/delete](#restful-friendshipdelete) | 删除好友请求 |
+| [/friendship/setDisplayName](#restful-friendshipsetDisplayName) | 设置好友备注名 |
+| [/friendship/all](#restful-friendshipfriendshipall) | 获取好友列表 |
+| [/friendship/getContactsInfo](#restful-friendshipgetContactsInfocontacstList) | 获取通讯录朋友信息列表 |
 ## API 说明
 
 ### RestFul /friendship/invite/{friendID}/{message}/{source}
@@ -19,7 +19,6 @@
 
 ```
 /friendship/invite/5/你好， 我叫xxx/来自账号搜索
-
 ```
 
 * friendID : 好友ID
@@ -53,9 +52,7 @@
 #### 请求示列
 
 ```
-
 /friendship/agree/6
-
 ```
 
 * friendID: 好友 Id
@@ -84,7 +81,6 @@
 
 ```
 /friendship/ignore/5
-
 ```
 
 * friendID:  好友 Id
@@ -113,7 +109,6 @@
 
 ```
 /friendship/delete/5
-
 ```
 
 * friendID: 好友 Id
@@ -142,7 +137,6 @@
 
 ```
 /friendship/setDisplayName/5/小黑
-
 ```
 
 * friendID: 好友 Id
@@ -232,7 +226,7 @@
 * 200: 请求成功
 
 
-### POST /friendship/getContactsInfo
+### POST /friendship/getContactsInfo/{contacstList}
 
  
 #### 请求示列
