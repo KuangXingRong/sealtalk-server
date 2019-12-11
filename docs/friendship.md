@@ -6,9 +6,9 @@
 | [/friendship/agree](#post-friendshipagree) | 同意加好友请求 |
 | [/friendship/ignore](#post-friendshipignore) | 忽略好友请求 |
 | [/friendship/delete](#post-friendshipdelete) | 删除好友请求 |
-| [/friendship/setDisplayName](#post-setDisplayName) | 设置好友备注名 |
-| [/friendship/all](#get-friendshipall) | 获取好友列表 |
-| [/friendship/getContactsInfo](#post-getContactsInfo) | 获取通讯录朋友信息列表 |
+| [/friendship/setDisplayName](#post-friendshipsetDisplayName) | 设置好友备注名 |
+| [/friendship/all](#get-friendshipfriendshipall) | 获取好友列表 |
+| [/friendship/getContactsInfo](#post-friendshipgetContactsInfo) | 获取通讯录朋友信息列表 |
 ## API 说明
 
 ### RestFul /friendship/invite/{friendID}/{message}/{source}
@@ -76,14 +76,14 @@
 * 200: 请求成功
 * 2004: 对方未邀请您
 
-### RestFul /ignore/{friendID}
+### RestFul /friendship/ignore/{friendID}
 
 忽略好友请求
 
 #### 请求示列
 
 ```
-/ignore/5
+/friendship/ignore/5
 
 ```
 
@@ -105,14 +105,14 @@
 * 200: 请求成功
 * 2005: 对方未邀请您
 
-### RestFul /delete/{friendID}
+### RestFul /friendship/delete/{friendID}
 
 删除好友
 
 #### 请求示列
 
 ```
-/delete/5
+/friendship/delete/5
 
 ```
 
@@ -134,14 +134,14 @@
 * 200: 请求成功
 * 2006: 对方不是您的好友
 
-### RestFul /setDisplayName/{friendID}/{displayName}
+### RestFul /friendship/setDisplayName/{friendID}/{displayName}
 
 设置好友备注名称
 
 #### 请求示列
 
 ```
-/setDisplayName/5/小黑
+/friendship/setDisplayName/5/小黑
 
 ```
 
@@ -232,7 +232,7 @@
 * 200: 请求成功
 
 
-### RestFul /getContactsInfo/{contacstList}
+### RestFul /friendship/getContactsInfo/{contacstList}
 
  
 #### 请求示列
