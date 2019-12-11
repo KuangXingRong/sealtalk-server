@@ -19,16 +19,15 @@
 
 添加好友
 
-#### 请求参数
+#### 请求示列
 
 ```
 /friendship/invite/5/你好， 我叫xxx/来自账号搜索
 
 ```
 
-
 * friendID : 好友ID
-* message : 请求说明信息
+* message : 请求加好友描述
 * source : 来源
 
 #### 返回结果
@@ -45,143 +44,139 @@
 返回码说明：
 
 * 200: 请求成功
-* 2000: {friendID}j就是自己，所以无法发起请求
+* 2000: {friendID}就是自己，所以无法发起请求
 * 2001: 未查到ID为{friendID}的用户
 * 2002: 已是好友
 * 2003: 后台添加数据失败
 
 
-### POST /friendship/agree
+### RestFul /friendship/agree/{friendID}
 
 同意好友请求
 
-#### 请求参数
+#### 请求示列
 
 ```
-{
-     "friendId": "RfqHbcjes"
-}
+
+/friendship/agree/6
+
 ```
 
-* friendId: 好友 Id
+* friendID: 好友 Id
 
 #### 返回结果
 
 正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
 
 ```
-{	
-	"code": 200,
-	"result": {
-		"action": "Added"
-	}
+{
+    code: 200,
+    message: "已同意"
 }
-```
-
-* action: 添加好友请求状态 `Added: 已添加` `None: 在对方黑名单中` `Sent: 请求已发送` 
+``` 
 
 返回码说明：
 
 * 200: 请求成功
-* 404: 无效的好友请求或未知好友
+* 2004: 对方未邀请您
 
-### POST /friendship/ignore
+### RestFul /ignore/{friendID}
 
 忽略好友请求
 
-#### 请求参数
+#### 请求示列
 
 ```
-{
-     "friendId": "RfqHbcjes"
-}
+/ignore/5
+
 ```
 
-* friendId:  好友 Id
+* friendID:  好友 Id
 
 #### 返回结果
 
 正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
 
 ```
-{	
-	"code": 200
+{
+    code: 200,
+    message: "已忽略"
 }
-```
+``` 
 
 返回码说明：
 
 * 200: 请求成功
-* 404: 无效的好友请求或未知好友
+* 2005: 对方未邀请您
 
-### POST /friendship/delete
+### RestFul /delete/{friendID}
 
 删除好友
 
-#### 请求参数
+#### 请求示列
 
 ```
-{
-     "friendId": "RfqHbcjes"
-}
+/delete/5
+
 ```
 
-* friendId: 好友 Id
+* friendID: 好友 Id
 
 #### 返回结果
 
 正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
 
 ```
-{	
-	"code": 200
+{
+    code: 200,
+    message: "已删除"
 }
-```
+``` 
 
 返回码说明：
 
 * 200: 请求成功
-* 404: 无效的好友请求或未知好友
+* 2006: 对方不是您的好友
 
-### POST /friendship/set_display_name
+### RestFul /setDisplayName/{friendID}/{displayName}
 
 设置好友备注名称
 
-#### 请求参数
+#### 请求示列
+
+```
+/setDisplayName/5/小黑
+
+```
+
+* friendID: 好友 Id
+* displayName: 备注
+
+#### 返回结果
+
+正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
 
 ```
 {
-     "friendId": "RfqHbcjes",
-     "displayName": "备注"
+    code: 200,
+    message: "已更改备注"
 }
-```
-
-* friendId: 好友 Id
-
-#### 返回结果
-
-正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
-
-```
-{	
-	"code": 200
-}
-```
+``` 
 
 返回码说明：
 
-* 200: 请求成功
-* 404: 无效的好友请求或未知好友
-* 400: 备注名称超限
+* 200: 请求成功 
+* 2007: 备注名称超限
+* 2008: 对方不是您的好友
 
-### GET /friendship/all
+### RestFul /friendship/all
 
-获取好友列表
+获取好友关系列表
 
-#### 请求参数
+#### 请求示列
 
 ```
-无
+/friendship/all
 ```
 
 #### 返回结果
@@ -189,216 +184,97 @@
 正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
 
 ```
-{	
-	"code": 200,
-	"result": [{
-		"displayName": "Martin",
-		"message": "你好，我是一杯水",
-		"status": 10,
-		"updatedAt": "2017-09-18",
-		"updatedTime": "1560222477000",
-		"user": {
-			"id": "slEcpCI63",
-			"nickname": "一杯水",
-			"region": "86",
-			"phone": "13269772766",
-			"portraitUri": "http://7xogjk.com1.z0.glb.clouddn.com/Fo6wxS7zzvGpwyAFhlpTUVirpOGh",
-			"gender": "male", // 性别
-			"stAccount": "b323422", // SealTalk 号
-			"phone": "18701029999" // 手机号
-		}
-	}]
+{
+
+    code: 200,
+    message: "OK",
+    result: [
+    		{
+    		    id: 25,
+    		    source: "来自账号搜索",
+    		    message: "你好， 我叫xxx",
+    		    status: "20",
+    		    statusUpdateTime: "1576043769821",
+    		    friendId: 5,
+    		    displayName: "小花",
+    		    nickname: "kxr111",
+    		    portraitUri: "http://www.sucaijishi.com/uploadfile/2016/0203/20160203022630582.png",
+    		    gender: "male",
+    		    phone: "131"
+    		},
+    		{
+    		    id: 27,
+    		    source: "来aah",
+    		    message: "你好，我是kxr111",
+    		    status: "11",
+    		    statusUpdateTime: "1576046682578",
+    		    friendId: 7,
+    		    displayName: null,
+    		    nickname: "kxr113",
+    		    portraitUri: "http://www.sucaijishi.com/uploadfile/2016/0203/20160203022630582.png",
+    		    gender: "male",
+    		    phone: "121"
+    		}
+    ]
 }
 
 ```
-
+* id: 好友关系ID
+* source: 来源， 比如扫描、搜索账号、明信片推荐等
 * displayName: 好友备注
 * message: 请求加好友描述
 * status: 好友关系状态 10: 请求, 11: 被请求, 20: 同意, 21: 忽略, 30: 被删除
-* updatedAt: 最后一次好友状态修改时间
-* user: 加好友请求发起方用户信息
-* user.id: Id
-* user.nickname: 昵称
-* user.region: 手机号区域标识
-* user.phone: 手机号
-* user.portraiUri: 头像
+* statusUpdateTime: 最后一次好友状态修改时间 
+* friendId: 对方ID
+* nickname: 对方昵称
+* gender: 性别
+* phone: 手机号
+* portraitUri: 头像
 
 返回码说明：
 
 * 200: 请求成功
 
-### GET /friendship/:friendId/profile
 
-获取好友信息
+### RestFul /getContactsInfo/{contacstList}
 
-#### 请求参数
-
+ 
+#### 请求示列
 ```
-friendId: 好友 Id
+friendship/getContactsInfo/13180273322,15177362245,13588376462
 ```
-
 #### 返回结果
 
 正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
-
-```
-{	"code":200,
-	"result": {
-		"displayName": "Wee",
-		"user": {
-			"id":"g891BoDvN",
-			"nickname":"Tina",
-			"region":"86",
-			"phone":"18221252163",
-			"portraitUri":"http://7xogjk.com1.z0.glb.clouddn.com/FjsNMjYoVKfGmA86SNwnggfKgE6_"
-		}
-	}
-}
-```
-
-* displayName: 好友备注
-* user: 好友信息
-* user.id: Id
-* user.nickname: 昵称
-* user.region: 手机号区域标识
-* user.phone: 手机号
-* user.portraiUri: 头像
-
-返回码说明：
-
-* 200: 请求成功
-* 403: friendId 非当前用户好友
-
-### POST /friendship/get_contacts_info
-
-获取通讯录朋友信息列表 （手机端传入手机列表，server 返回列表信息）
-
-|参数|说明|数据类型|是否必填|
-|---|----|------|------|
-|contacstList|手机号列表|Array| 是|
 
 ```
 {
-	contactList: ['13099990000','13912349090']
-}
-```
-#### 返回结果
-
-正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
-
-```
-{	
-	"code": 200,
-	"result": [{
-		"registered": 1, // 0 未注册 1 已注册
-		"relationship": 0, // 0 非好友 1 好友
-		"stAccount": "ST64532", // sealtalk 号
-		"phone": "18700002234",
-		"id", "se2fd23", // 次用户 id
-		"nickname": "Tom", // 昵称
-		"portraitUri": "http://test.com/user/abc123.jpg" // 头像
-	},{
-		"registered": 0,
-		"relationship": "", // 0 非好友 1 好友
-		"stAccount": "",
-		"phone": "18700002234",
-		"id", "",
-		"nickname": "",
-		"portraitUri": ""
-	},{
-		"registered": 1,
-		"relationship": 1, // 0 非好友 1 好友
-		"stAccount": "",
-		"phone": "18700002234",
-		"id", "se2fd23",
-		"nickname": "Tom",
-		"portraitUri": "http://test.com/user/abc123.jpg"
-	}]
+    code: 200,
+    message: "OK",
+    result: [
+        {
+        relationship: 1,
+        userid: 5,
+        stAccount: "kxr111",
+        nickname: "kxr111",
+        portraitUri: "http://www.sucaijishi.com/uploadfile/2016/0203/20160203022630582.png",
+        phone: "13180273322"
+        },
+        {
+        relationship: 0,
+        userid: 7,
+        stAccount: "kxr113",
+        nickname: "kxr113",
+        portraitUri: "http://www.sucaijishi.com/uploadfile/2016/0203/20160203022630582.png",
+        phone: "15177362245"
+        }
+    ]
 }
 
 ```
-
-### POST /friendship/batch_delete
-
-批量删除好友
-
-#### 请求参数
-
-|参数|说明|数据类型|是否必填|
-|---|----|------|------|
-|friendIds|好友 Id|Array| 是|
-
-```
-{
-    "friendIds": ["RfqHbcjes","RfqHbcjes"]
-}
-```
-
-
-#### 返回结果
-
-正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
-
-```
-{	
-	"code": 200
-}
-```
-
-返回码说明：
-
-* 200: 请求成功
-
-### POST /friendship/set_friend_description
-
-设置朋友备注和描述
-
-#### 请求参数
-
-|参数|说明|数据类型|是否必填|
-|---|----|------|------|
-|friendId|朋友 id |String| 是|
-|displayName|备注 |String | 否|
-|region|国家区号|String|否|
-|phone|手机号 |String| 否|
-|description|更多描述 |String | 否|
-|imageUri|照片地址 |String| 否|
-
-设置哪项传哪项，不传为不设置,设置为空,传空字符串
-
-#### 返回结果
-
-正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
-
-```
-{	
-	"code": 200,
-}
-
-```
-## POST /friendship/get_friend_description
-
-获取朋友备注和描述
-
-#### 请求参数
-
-|参数|说明|数据类型|是否必填|
-|---|----|------|------|
-|friendId|朋友 id |String| 是|
-
-#### 返回结果
-
-正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
-
-```
-{	
-	"displayName": 'Fox', 
-	"region": '86', 
-	"phone": '18700991234', 
-	"description": '融云该公司地址在北京市朝阳区北苑路北。', 
-	"imageUri": 'http://rongcloud-file.ronghub.com/cb6d05474f891251ae.PNG', 
-}
-
-```
-
-
+* relationship: 关系 1是好友 2不是好友
+* userid: 用户ID
+* stAccount: 账号
+* nickname: 昵称
+* portraitUri: 头像
+* phone: 手机号
