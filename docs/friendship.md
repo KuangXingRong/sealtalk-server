@@ -6,13 +6,9 @@
 | [/friendship/agree](#post-friendshipagree) | 同意加好友请求 |
 | [/friendship/ignore](#post-friendshipignore) | 忽略好友请求 |
 | [/friendship/delete](#post-friendshipdelete) | 删除好友请求 |
-| [/friendship/set_display_name](#post-friendshipset_display_name) | 设置好友备注名 |
+| [/setDisplayName/{friendID}/{displayName}](#post-friendshipset_display_name) | 设置好友备注名 |
 | [/friendship/all](#get-friendshipall) | 获取好友列表 |
-| [/friendship/:friendId/profile](#get-friendshipfriendidprofile) | 获取好友信息 |
 | [/friendship/get_contacts_info](#post-friendshipgetcontactsinfo) | 获取通讯录朋友信息列表 |
-|[/friendship/batch_delete](#post-friendshipbatchdelete)|批量删除好友|
-|[/friendship/set_friend_description](#post-friendshipsetfrienddescription)|设置朋友备注和描述|
-|[/friendship/get_friend_description](#post-friendshipgetfrienddescription)|获取朋友备注和描述|
 ## API 说明
 
 ### RestFul /friendship/invite/{friendID}/{message}/{source}
