@@ -232,7 +232,7 @@
 * 200: 请求成功
 
 
-### RestFul /friendship/getContactsInfo/{contacstList}
+### POST /friendship/getContactsInfo
 
  
 #### 请求示列
