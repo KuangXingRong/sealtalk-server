@@ -2,11 +2,11 @@
 
 | 接口地址 | 说明 |
 |---------|-----|
-| [/friendship/invite](#restful-friendshipinvite) | 发起添加好友 |
-| [/friendship/agree](#restful-friendshipagree) | 同意加好友请求 |
-| [/friendship/ignore](#restful-friendshipignore) | 忽略好友请求 |
-| [/friendship/delete](#restful-friendshipdelete) | 删除好友请求 |
-| [/friendship/setDisplayName](#restful-friendshipsetDisplayName) | 设置好友备注名 |
+| [/friendship/invite](#restful-friendshipinvitefriendidmessagesource) | 发起添加好友 |
+| [/friendship/agree](#restful-friendshipagreefriendid) | 同意加好友请求 |
+| [/friendship/ignore](#restful-friendshipignorefriendid) | 忽略好友请求 |
+| [/friendship/delete](#restful-friendshipdeletefriendid) | 删除好友请求 |
+| [/friendship/setDisplayName](#restful-friendshipsetdisplaynamefriendiddisplayname) | 设置好友备注名 |
 | [/friendship/all](#restful-friendshipfriendshipall) | 获取好友列表 |
 | [/friendship/getContactsInfo](#restful-friendshipgetcontactsinfocontacstList) | 获取通讯录朋友信息列表 |
 ## API 说明
