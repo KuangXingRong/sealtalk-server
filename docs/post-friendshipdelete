@@ -15,40 +15,41 @@
 |[/friendship/get_friend_description](#post-friendshipgetfrienddescription)|获取朋友备注和描述|
 ## API 说明
 
-### POST /friendship/invite
+### RestFul /friendship/invite/{friendID}/{message}/{source}
 
 添加好友
 
 #### 请求参数
 
 ```
-{
-     "friendId": "RfqHbcjes",
-     "message": "你好，我是 Martin"
-}
+/friendship/invite/5/你好， 我叫xxx/来自账号搜索
+
 ```
 
-* friendId: 好友 Id
+
+* friendID : 好友ID
+* message : 请求说明信息
+* source : 来源
 
 #### 返回结果
 
 正常返回，返回的 HTTP Status Code 为 200，返回的内容如下：
 
 ```
-{	
-	"code": 200,
-	"result": {
-		"action": "Added"
-	}
+{
+    code: 200,
+    message: "已发送好友请求"
 }
 ```
-
-* action: 添加好友请求状态 `Added: 已添加` `None: 在对方黑名单中` `Sent: 请求已发送` `AddDirectly: 直接添加对方`
-
+ 
 返回码说明：
 
 * 200: 请求成功
-* 400: 已经是好友
+* 2000: {friendID}j就是自己，所以无法发起请求
+* 2001: 未查到ID为{friendID}的用户
+* 2002: 已是好友
+* 2003: 后台添加数据失败
+
 
 ### POST /friendship/agree
 
